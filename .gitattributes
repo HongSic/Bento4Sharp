@@ -1,0 +1,19 @@
+# Normalize line endings in the repository; check out native endings by default.
+* text=auto
+
+# Shell and Python scripts must keep LF so they run under bash on any platform.
+*.sh text eol=lf
+*.py text eol=lf
+
+# Visual Studio solution and project files are CRLF.
+*.sln text eol=crlf
+vs2010/**/*.csproj text eol=crlf
+vs2010/SharedAssemblyInfo.cs text eol=crlf
+vs2010/app.config text eol=crlf
+
+# Binary files
+*.mp4 binary
+*.m4a binary
+*.png binary
+*.dll binary
+*.exe binary

@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworks>net8.0;net20</TargetFrameworks>
+    <AssemblyName>mp42avc</AssemblyName>
+    <RootNamespace>Bento4Sharp.Tools.Mp42Avc</RootNamespace>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+    <NoWarn>$(NoWarn);CS0219;CS0168;CS0162</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Bento4Sharp\Bento4Sharp.csproj" />
+  </ItemGroup>
+
+</Project>

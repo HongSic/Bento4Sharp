@@ -1,0 +1,47 @@
+# Build output
+bin/
+obj/
+artifacts/
+publish/
+*.nupkg
+*.snupkg
+
+# Visual Studio (2010 and later)
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.cache
+*.ncb
+*.sdf
+*.opensdf
+_ReSharper*/
+*.DotSettings.user
+ipch/
+TestResults/
+
+# Other IDEs and editors
+.idea/
+.vscode/
+*.swp
+*~
+
+# OS files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# Python (test input generators)
+__pycache__/
+*.pyc
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+*.orig
+
+# Media produced while testing
+*.mp4.tmp

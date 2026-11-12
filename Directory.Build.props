@@ -1,0 +1,43 @@
+<Project>
+
+  <!-- Shared by the library, the 26 tools and tests/RoundTrip. -->
+
+  <!-- The whole source tree is C# 4.0: the same files are compiled by
+       Visual Studio 2010 (vs2010/Bento4Sharp.VS2010.sln, .NET 2.0) and by the
+       dotnet SDK. LangVersion 4 makes the SDK build reject newer syntax, so it
+       cannot be reintroduced by accident. Do not override these in a project. -->
+  <PropertyGroup>
+    <LangVersion>4</LangVersion>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <!-- Assembly information (the Visual Studio 2010 projects get the same
+       values from vs2010/SharedAssemblyInfo.cs). -->
+  <PropertyGroup>
+    <Product>Bento4Sharp</Product>
+    <Authors>HongSic (HSKernel)</Authors>
+    <Company>HongSic (HSKernel)</Company>
+    <Copyright>Copyright 2002-2026 Axiomatic Systems, LLC. C# implementation by HongSic (HSKernel).</Copyright>
+    <Version>1.0.0</Version>
+    <!-- Only the library is a NuGet package (it sets IsPackable itself). -->
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <!-- .NET Framework 2.0: the dotnet SDK has no reference assemblies for it.
+       This package supplies them at build time only (PrivateAssets=all):
+       it adds nothing to the output and is not a runtime dependency.
+       (They describe .NET Framework 2.0 SP2: that a member compiles does not
+       prove that the original 2.0 has it. See docs/PORTING.md.) -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'net20'">
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
+  </ItemGroup>
+
+  <!-- The executables use the same helpers as the library for what the old
+       base class library lacks (src/Bento4Sharp/Core/Compat.cs is internal to
+       each assembly; nothing in it is compiled for net8.0). The extension
+       methods of Compat.Extensions.cs stay in the library. -->
+  <ItemGroup Condition="'$(TargetFramework)' != '' and '$(TargetFramework)' != 'net8.0' and '$(MSBuildProjectName)' != 'Bento4Sharp'">
+    <Compile Include="$(MSBuildThisFileDirectory)src/Bento4Sharp/Core/Compat.cs" Link="Compat.cs" />
+  </ItemGroup>
+
+</Project>

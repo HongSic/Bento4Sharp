@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworks>net8.0;net20</TargetFrameworks>
+    <AssemblyName>roundtrip</AssemblyName>
+    <RootNamespace>Bento4Sharp.Tests.RoundTrip</RootNamespace>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Bento4Sharp\Bento4Sharp.csproj" />
+  </ItemGroup>
+
+</Project>

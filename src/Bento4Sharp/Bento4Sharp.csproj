@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFrameworks>net8.0;netstandard2.0;netstandard1.3;net20</TargetFrameworks>
+    <AssemblyName>Bento4Sharp</AssemblyName>
+    <RootNamespace>Bento4Sharp</RootNamespace>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <!-- doc / unused-variable noise that a mechanical port produces in bulk -->
+    <NoWarn>$(NoWarn);CS1591;CS0649;CS0169;CS0414;CS0219;CS0168;CS0162</NoWarn>
+    <!-- netstandard1.3 is a deliberate target: silence NETSDK1215 ("Targeting .NET Standard prior to 2.0 is no longer recommended"), and only that -->
+    <CheckNotRecommendedTargetFramework>false</CheckNotRecommendedTargetFramework>
+  </PropertyGroup>
+
+  <!-- NuGet package (dotnet pack src/Bento4Sharp -c Release). Authors, Version,
+       Product and Copyright come from Directory.Build.props. -->
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <PackageId>Bento4Sharp</PackageId>
+    <Title>Bento4Sharp</Title>
+    <Description>Pure C# implementation of Bento4, the MP4 / ISO-BMFF library: read, write, inspect, fragment, mux and encrypt/decrypt (CENC, CBCS, PIFF, OMA DCF, Marlin, ISMA) MP4 files, with AVC/HEVC/AAC/AC-3/E-AC-3/AC-4 parsers and MPEG-2 TS output. No native dependencies; targets .NET Framework 2.0 (and so 3.5 and 4.x), .NET Standard 1.3 / 2.0 and .NET 8. Verified byte for byte against the original Bento4 tools.</Description>
+    <PackageTags>mp4;iso-bmff;bento4;fmp4;dash;hls;cenc;cbcs;drm;mpeg-ts;avc;hevc;aac</PackageTags>
+    <PackageLicenseExpression>GPL-2.0-or-later</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/HongSic/Bento4Sharp</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/HongSic/Bento4Sharp.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageReleaseNotes>First release. C# implementation of Bento4 1.6.0.0 (commit b8c50a078356a1c3444ce0a8744634ed488424a4).</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- nuget.org shows the English README -->
+    <None Include="..\..\README.en.md" Pack="true" PackagePath="README.md" Visible="false" />
+    <None Include="..\..\LICENSE" Pack="true" PackagePath="\" Visible="false" />
+  </ItemGroup>
+
+</Project>

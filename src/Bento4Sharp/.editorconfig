@@ -1,0 +1,68 @@
+# Bento4Sharp sources compiled inside another project
+# ----------------------------------------------------
+# This file only matters when this folder is copied into (or linked from) a
+# project that has <Nullable>enable</Nullable>, for example a new .NET 8/9
+# project. It applies to the .cs files below this folder only and leaves the
+# rest of that project untouched.
+#
+# The source is C# 4.0 (it also builds with Visual Studio 2010), so it cannot
+# carry nullable annotations. A current compiler would therefore report more
+# than 1,000 nullable warnings for it. Only those warnings are turned off
+# here: every other warning and all code analysis stay as the project sets
+# them.
+
+[*.cs]
+# Nullable reference type warnings (the compiler's "nullable" group).
+dotnet_diagnostic.CS8597.severity = none
+dotnet_diagnostic.CS8600.severity = none
+dotnet_diagnostic.CS8601.severity = none
+dotnet_diagnostic.CS8602.severity = none
+dotnet_diagnostic.CS8603.severity = none
+dotnet_diagnostic.CS8604.severity = none
+dotnet_diagnostic.CS8605.severity = none
+dotnet_diagnostic.CS8607.severity = none
+dotnet_diagnostic.CS8608.severity = none
+dotnet_diagnostic.CS8609.severity = none
+dotnet_diagnostic.CS8610.severity = none
+dotnet_diagnostic.CS8611.severity = none
+dotnet_diagnostic.CS8612.severity = none
+dotnet_diagnostic.CS8613.severity = none
+dotnet_diagnostic.CS8614.severity = none
+dotnet_diagnostic.CS8615.severity = none
+dotnet_diagnostic.CS8616.severity = none
+dotnet_diagnostic.CS8617.severity = none
+dotnet_diagnostic.CS8618.severity = none
+dotnet_diagnostic.CS8619.severity = none
+dotnet_diagnostic.CS8620.severity = none
+dotnet_diagnostic.CS8621.severity = none
+dotnet_diagnostic.CS8622.severity = none
+dotnet_diagnostic.CS8624.severity = none
+dotnet_diagnostic.CS8625.severity = none
+dotnet_diagnostic.CS8629.severity = none
+dotnet_diagnostic.CS8631.severity = none
+dotnet_diagnostic.CS8633.severity = none
+dotnet_diagnostic.CS8634.severity = none
+dotnet_diagnostic.CS8643.severity = none
+dotnet_diagnostic.CS8644.severity = none
+dotnet_diagnostic.CS8645.severity = none
+dotnet_diagnostic.CS8655.severity = none
+dotnet_diagnostic.CS8667.severity = none
+dotnet_diagnostic.CS8670.severity = none
+dotnet_diagnostic.CS8714.severity = none
+dotnet_diagnostic.CS8762.severity = none
+dotnet_diagnostic.CS8763.severity = none
+dotnet_diagnostic.CS8764.severity = none
+dotnet_diagnostic.CS8765.severity = none
+dotnet_diagnostic.CS8766.severity = none
+dotnet_diagnostic.CS8767.severity = none
+dotnet_diagnostic.CS8768.severity = none
+dotnet_diagnostic.CS8769.severity = none
+dotnet_diagnostic.CS8770.severity = none
+dotnet_diagnostic.CS8774.severity = none
+dotnet_diagnostic.CS8775.severity = none
+dotnet_diagnostic.CS8776.severity = none
+dotnet_diagnostic.CS8777.severity = none
+dotnet_diagnostic.CS8819.severity = none
+dotnet_diagnostic.CS8824.severity = none
+dotnet_diagnostic.CS8825.severity = none
+dotnet_diagnostic.CS8847.severity = none
