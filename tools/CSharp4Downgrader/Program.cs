@@ -262,7 +262,7 @@ namespace CSharp4Downgrader
                     if (byPath.TryGetValue(r, out q)) p.References.Add(q);
                 }
                 if (forcedTfms != null) p.Tfms = new List<string>(forcedTfms);
-                if (p.Tfms.Count == 0) p.Tfms = new List<string> { "net8.0", "netstandard2.0", "netstandard1.3", "net20" };
+                if (p.Tfms.Count == 0) p.Tfms = new List<string> { "net6.0", "netstandard2.0", "netstandard1.3", "net20" };
             }
             // files: each belongs to the project with the deepest containing directory
             List<string> files = roots.SelectMany(r => Directory.GetFiles(r, "*.cs", SearchOption.AllDirectories)).Distinct(StringComparer.OrdinalIgnoreCase)
@@ -276,7 +276,7 @@ namespace CSharp4Downgrader
                 if (owner == null) {
                     owner = projects.FirstOrDefault(p => p.Name == "(loose files)");
                     if (owner == null) {
-                        owner = new Project { Name = "(loose files)", Dir = root, Tfms = forcedTfms ?? new List<string> { "net8.0", "netstandard2.0", "netstandard1.3", "net20" } };
+                        owner = new Project { Name = "(loose files)", Dir = root, Tfms = forcedTfms ?? new List<string> { "net6.0", "netstandard2.0", "netstandard1.3", "net20" } };
                         projects.Add(owner);
                     }
                 }

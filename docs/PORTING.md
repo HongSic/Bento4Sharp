@@ -17,15 +17,15 @@ fix upstream behaviour. Where a deviation is unavoidable, mark it with a
 | `Source/C++/Apps/Mp4Dump`            | `src/Tools/Mp4Dump/`               |
 
 One C# file per upstream `.h/.cpp` pair, holding every class of that pair.
-Targets: `net8.0`, `netstandard2.0`, `netstandard1.3` and `net20` for the
-library, `net8.0` and `net20` for the tools; **C# 4.0 syntax only** (see
+Targets: `net6.0`, `netstandard2.0`, `netstandard1.3` and `net20` for the
+library, `net6.0` and `net20` for the tools; **C# 4.0 syntax only** (see
 "Language version" below), no `unsafe`, no NuGet dependencies (except the unavoidable `NETStandard.Library`
 metapackage of `netstandard1.3`; the reference assemblies package used to
-compile `net20` is build-time only). The code is written against the .NET 8
+compile `net20` is build-time only). The code is written against the .NET 6
 base class library: what an older target lacks goes in `Core/Compat.cs`
-(internal, not compiled for `net8.0`; its extension methods are in
+(internal, not compiled for `net6.0`; its extension methods are in
 `Core/Compat.Extensions.cs`, which only the library compiles), or in the
-narrowest possible `#if` whose `net8.0` branch is the original code. Do not use language features that
+narrowest possible `#if` whose `net6.0` branch is the original code. Do not use language features that
 need runtime types the old targets do not have (tuples, `Span`, `Index`/`Range`,
 `async`, `init`/records, default interface methods), and do not format or parse
 floating point values with the BCL directly (see `Compat.FormatFixed`,

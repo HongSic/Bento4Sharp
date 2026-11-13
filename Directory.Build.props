@@ -9,6 +9,10 @@
   <PropertyGroup>
     <LangVersion>4</LangVersion>
     <Nullable>disable</Nullable>
+    <!-- net6.0 is targeted on purpose: it is the lowest modern .NET the source
+         compiles for unchanged, and every later version uses that build. The
+         SDK's "out of support" notice (NETSDK1138) is therefore turned off. -->
+    <CheckEolTargetFramework>false</CheckEolTargetFramework>
   </PropertyGroup>
 
   <!-- Assembly information (the Visual Studio 2010 projects get the same
@@ -34,9 +38,9 @@
 
   <!-- The executables use the same helpers as the library for what the old
        base class library lacks (src/Bento4Sharp/Core/Compat.cs is internal to
-       each assembly; nothing in it is compiled for net8.0). The extension
+       each assembly; nothing in it is compiled for net6.0). The extension
        methods of Compat.Extensions.cs stay in the library. -->
-  <ItemGroup Condition="'$(TargetFramework)' != '' and '$(TargetFramework)' != 'net8.0' and '$(MSBuildProjectName)' != 'Bento4Sharp'">
+  <ItemGroup Condition="'$(TargetFramework)' != '' and '$(TargetFramework)' != 'net6.0' and '$(MSBuildProjectName)' != 'Bento4Sharp'">
     <Compile Include="$(MSBuildThisFileDirectory)src/Bento4Sharp/Core/Compat.cs" Link="Compat.cs" />
   </ItemGroup>
 

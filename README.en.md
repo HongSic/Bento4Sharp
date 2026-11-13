@@ -12,8 +12,8 @@ a single DLL is enough, and being managed code only it is not tied to an operati
 The class structure and logic of the original are carried over almost line by line, and the goal is output that is
 byte-for-byte identical to the original tools.
 
-- Target frameworks: the library targets `net8.0`, `netstandard2.0`, `netstandard1.3` and `net20` (.NET Framework 2.0 and later); the tools target `net8.0` and `net20`
-- Runtime dependencies: none on `net8.0`, `netstandard2.0` and `net20`. Only `netstandard1.3` depends on the `NETStandard.Library` metapackage (the base class library of that framework itself)
+- Target frameworks: the library targets `net6.0`, `netstandard2.0`, `netstandard1.3` and `net20` (.NET Framework 2.0 and later); the tools target `net6.0` and `net20`
+- Runtime dependencies: none on `net6.0`, `netstandard2.0` and `net20`. Only `netstandard1.3` depends on the `NETStandard.Library` metapackage (the base class library of that framework itself)
 - The source uses C# 4.0 syntax only: the same files are built by both the dotnet SDK and Visual Studio 2010
 - No `unsafe` code
 - Upstream baseline: Bento4 1.6.0.0 (commit `b8c50a078356a1c3444ce0a8744634ed488424a4`)
@@ -51,14 +51,14 @@ dotnet build Bento4Sharp.sln -c Release
 To run a single tool (the projects are multi-targeted, so `-f` is required):
 
 ```bash
-dotnet run --project src/Tools/Mp4Dump -c Release -f net8.0 -- input.mp4
+dotnet run --project src/Tools/Mp4Dump -c Release -f net6.0 -- input.mp4
 ```
 
 ### Target frameworks
 
 | Framework | Used by | Dependencies | Notes |
 |---|---|---|---|
-| `net8.0` | library, tools | none | the reference build |
+| `net6.0` | library, tools | none | the reference build |
 | `netstandard2.0` | library | none | for .NET Framework 4.6.1+, .NET Core 2.0+ and so on |
 | `netstandard1.3` | library | `NETStandard.Library` 1.6.1 | On .NET Standard 1.x the base class library is itself delivered as packages, so this metapackage cannot be avoided. There are no other packages. 1.0–1.2 cannot be targeted because they have no cryptography or file APIs |
 | `net20` | library, tools | none | .NET Framework 2.0 and later (CLR 2.0). Also runs unchanged on 3.5 and 4.x. References `mscorlib` only; `System.Core` is not used |
@@ -99,7 +99,7 @@ dotnet run --project src/Tools/Mp4Dump -c Release -f net8.0 -- input.mp4
   [Compat.Extensions.cs](src/Bento4Sharp/Core/Compat.Extensions.cs)).
   `Compat` supplies members that older base class libraries lack (`List<T>.EnsureCapacity`, `Dictionary.TryAdd`, …)
   and reimplements floating-point formatting and parsing (`ToString("F6")`, `double.Parse`), whose results differ on
-  .NET Framework, so that they match .NET 8. It is not compiled into the `net8.0` build.
+  .NET Framework, so that they match .NET 6. It is not compiled into the `net6.0` build.
 - One difference on `netstandard1.3` only: the 64-bit overloads of `Array.Copy` do not exist there, so the 32-bit
   overloads are used for ranges below 2 GB (within the .NET array size limit, so behaviour is the same).
 
@@ -228,7 +228,7 @@ Emscripten and run with `node`) and the `Test/Data` folder of the original sourc
 tests/compare-with-reference.sh <reference-dir> <Bento4/Test/Data>
 ```
 
-By default the `net8.0` build is compared. With `BENTO4SHARP_FRAMEWORK=net20` the .NET Framework 2.0 executables
+By default the `net6.0` build is compared. With `BENTO4SHARP_FRAMEWORK=net20` the .NET Framework 2.0 executables
 are built and compared in the same way.
 
 ```bash
@@ -236,8 +236,8 @@ BENTO4SHARP_FRAMEWORK=net20 tests/compare-with-reference.sh <reference-dir> <Ben
 ```
 
 The scope and results of the verification are in [docs/VERIFICATION.md](docs/VERIFICATION.md) (in Korean).
-In short: all six comparison suites (8,526 cases in total) pass with no failures on the `net8.0` build, the `net20`
-build and the Visual Studio 2010 build (.NET Framework 2.0), all three run again after the move to `net20`. The
+In short: all six comparison suites (8,526 cases in total) pass with no failures on the `net6.0` build, the `net20`
+build and the Visual Studio 2010 build (.NET Framework 2.0). The `net6.0` run was made after the modern target was lowered from `net8.0` to `net6.0`; the two .NET Framework runs were made after the move to `net20`. The
 `netstandard2.0` and `netstandard1.3` library builds passed the same suites before that move; after it they were
 built and their public API was compared (unchanged), but the suites were not run again with them.
 Formats for which no real media was available (HEVC, Dolby Vision, AC-3, E-AC-3, AC-4, RTP hint tracks) were

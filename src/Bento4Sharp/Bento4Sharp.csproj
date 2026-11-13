@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFrameworks>net8.0;netstandard2.0;netstandard1.3;net20</TargetFrameworks>
+    <TargetFrameworks>net6.0;netstandard2.0;netstandard1.3;net20</TargetFrameworks>
     <AssemblyName>Bento4Sharp</AssemblyName>
     <RootNamespace>Bento4Sharp</RootNamespace>
     <ImplicitUsings>disable</ImplicitUsings>
@@ -21,7 +21,7 @@
     <IsPackable>true</IsPackable>
     <PackageId>Bento4Sharp</PackageId>
     <Title>Bento4Sharp</Title>
-    <Description>Pure C# implementation of Bento4, the MP4 / ISO-BMFF library: read, write, inspect, fragment, mux and encrypt/decrypt (CENC, CBCS, PIFF, OMA DCF, Marlin, ISMA) MP4 files, with AVC/HEVC/AAC/AC-3/E-AC-3/AC-4 parsers and MPEG-2 TS output. No native dependencies; targets .NET Framework 2.0 (and so 3.5 and 4.x), .NET Standard 1.3 / 2.0 and .NET 8. Verified byte for byte against the original Bento4 tools.</Description>
+    <Description>Pure C# implementation of Bento4, the MP4 / ISO-BMFF library: read, write, inspect, fragment, mux and encrypt/decrypt (CENC, CBCS, PIFF, OMA DCF, Marlin, ISMA) MP4 files, with AVC/HEVC/AAC/AC-3/E-AC-3/AC-4 parsers and MPEG-2 TS output. No native dependencies; targets .NET Framework 2.0 (and so 3.5 and 4.x), .NET Standard 1.3 / 2.0 and .NET 6. Verified byte for byte against the original Bento4 tools.</Description>
     <PackageTags>mp4;iso-bmff;bento4;fmp4;dash;hls;cenc;cbcs;drm;mpeg-ts;avc;hevc;aac</PackageTags>
     <PackageLicenseExpression>GPL-2.0-or-later</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/HongSic/Bento4Sharp</PackageProjectUrl>

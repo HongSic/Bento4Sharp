@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>net8.0;net20</TargetFrameworks>
+    <TargetFrameworks>net6.0;net20</TargetFrameworks>
     <AssemblyName>roundtrip</AssemblyName>
     <RootNamespace>Bento4Sharp.Tests.RoundTrip</RootNamespace>
     <ImplicitUsings>disable</ImplicitUsings>

@@ -10,8 +10,8 @@
 
 원본의 클래스 구조와 로직을 거의 줄 단위로 그대로 옮겼고, 원본 도구와 출력이 바이트 단위로 같아지는 것을 목표로 합니다.
 
-- 대상 프레임워크: 라이브러리는 `net8.0`, `netstandard2.0`, `netstandard1.3`, `net20`(.NET Framework 2.0 이상), 도구는 `net8.0`, `net20`
-- 런타임 의존성: `net8.0`, `netstandard2.0`, `net20`은 없음. `netstandard1.3`만 `NETStandard.Library` 메타패키지(그 프레임워크의 기본 클래스 라이브러리 자체)에 의존
+- 대상 프레임워크: 라이브러리는 `net6.0`, `netstandard2.0`, `netstandard1.3`, `net20`(.NET Framework 2.0 이상), 도구는 `net6.0`, `net20`
+- 런타임 의존성: `net6.0`, `netstandard2.0`, `net20`은 없음. `netstandard1.3`만 `NETStandard.Library` 메타패키지(그 프레임워크의 기본 클래스 라이브러리 자체)에 의존
 - 소스는 C# 4.0 문법만 사용: 같은 소스를 dotnet SDK와 Visual Studio 2010 양쪽에서 빌드합니다
 - `unsafe` 코드 없음
 - 기준 원본: Bento4 1.6.0.0 (커밋 `b8c50a078356a1c3444ce0a8744634ed488424a4`)
@@ -49,14 +49,14 @@ dotnet build Bento4Sharp.sln -c Release
 도구 하나만 실행하려면(프로젝트가 여러 프레임워크를 대상으로 하므로 `-f`가 필요합니다):
 
 ```bash
-dotnet run --project src/Tools/Mp4Dump -c Release -f net8.0 -- input.mp4
+dotnet run --project src/Tools/Mp4Dump -c Release -f net6.0 -- input.mp4
 ```
 
 ### 대상 프레임워크
 
 | 프레임워크 | 대상 | 의존성 | 비고 |
 |---|---|---|---|
-| `net8.0` | 라이브러리, 도구 | 없음 | 기준 빌드 |
+| `net6.0` | 라이브러리, 도구 | 없음 | 기준 빌드 |
 | `netstandard2.0` | 라이브러리 | 없음 | .NET Framework 4.6.1 이상, .NET Core 2.0 이상 등에서 참조 |
 | `netstandard1.3` | 라이브러리 | `NETStandard.Library` 1.6.1 | .NET Standard 1.x는 기본 클래스 라이브러리가 패키지로 제공되므로 이 메타패키지는 피할 수 없습니다. 그 밖의 패키지는 없습니다. 1.0~1.2는 암호화·파일 API가 없어 대상이 될 수 없습니다 |
 | `net20` | 라이브러리, 도구 | 없음 | .NET Framework 2.0 이상 (CLR 2.0). 3.5와 4.x에서도 그대로 실행됩니다. `mscorlib`만 참조하고 `System.Core`는 쓰지 않습니다 |
@@ -90,8 +90,8 @@ dotnet run --project src/Tools/Mp4Dump -c Release -f net8.0 -- input.mp4
   메서드 본문 안의 `#if`와 내부 클래스 `Compat`([src/Bento4Sharp/Core/Compat.cs](src/Bento4Sharp/Core/Compat.cs),
   [Compat.Extensions.cs](src/Bento4Sharp/Core/Compat.Extensions.cs))에 있습니다.
   `Compat`은 예전 기본 클래스 라이브러리에 없는 멤버(`List<T>.EnsureCapacity`, `Dictionary.TryAdd` 등)와,
-  .NET Framework에서 결과가 달라지는 실수 서식·파싱(`ToString("F6")`, `double.Parse`)을 .NET 8과 같은 결과가 나오도록 대신 구현한 것입니다.
-  `net8.0` 빌드에는 컴파일되지 않습니다.
+  .NET Framework에서 결과가 달라지는 실수 서식·파싱(`ToString("F6")`, `double.Parse`)을 .NET 6 이상과 같은 결과가 나오도록 대신 구현한 것입니다.
+  `net6.0` 빌드에는 컴파일되지 않습니다.
 - `netstandard1.3`에서만 다른 점: `Array.Copy`의 64비트 오버로드가 없어 2GB 미만 범위의 32비트 오버로드를 씁니다(.NET 배열 크기 한도 안이라 동작 차이는 없습니다).
 
 ### Visual Studio 2010에서 빌드
@@ -208,7 +208,7 @@ XML 문서 파일(`Bento4Sharp.xml`)이 필요하면 `-p:GenerateDocumentationFi
 tests/compare-with-reference.sh <reference-dir> <Bento4/Test/Data>
 ```
 
-기본은 `net8.0` 빌드를 비교합니다. `BENTO4SHARP_FRAMEWORK=net20`을 주면 .NET Framework 2.0용 실행 파일을 빌드해 같은 비교를 합니다.
+기본은 `net6.0` 빌드를 비교합니다. `BENTO4SHARP_FRAMEWORK=net20`을 주면 .NET Framework 2.0용 실행 파일을 빌드해 같은 비교를 합니다.
 
 ```bash
 BENTO4SHARP_FRAMEWORK=net20 tests/compare-with-reference.sh <reference-dir> <Bento4/Test/Data>

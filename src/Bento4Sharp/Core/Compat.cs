@@ -2,18 +2,18 @@
 // Not ported from upstream: support code for the older target frameworks.
 // Licensed under the GNU General Public License v2 or later. See LICENSE.
 
-// PORT NOTE: the library is written against the .NET 8 base class library.
+// PORT NOTE: the library is written against the .NET 6 base class library.
 // This file and Compat.Extensions.cs hold what the other targets
 // (netstandard2.0, netstandard1.3, net20) need to compile the same sources
 // without any extra package:
 //  - here: helpers used by the few call sites that need an `#if` because the
-//    member is static or takes a Span (the net8.0 branch of those sites is the
+//    member is static or takes a Span (the net6.0 branch of those sites is the
 //    original code). This file is also compiled into each tool for those
 //    targets (see Directory.Build.props);
 //  - in Compat.Extensions.cs (library only): extension methods standing in
 //    for instance members that the old BCL lacks, so that the call sites are
 //    identical for every target.
-// Nothing in this file is compiled for net8.0.
+// Nothing in this file is compiled for net6.0.
 
 #if !NET6_0_OR_GREATER
 
@@ -84,7 +84,7 @@ namespace Bento4
         |   that upstream uses). .NET Framework does not: ToString("F6") works
         |   from 15 significant digits, double.Parse is not always correctly
         |   rounded and reports an overflow instead of returning infinity. The
-        |   functions below give the .NET 8 results on every runtime.
+        |   functions below give the .NET 6 results on every runtime.
         +---------------------------------------------------------------------*/
 
         /// <summary>double.IsNegative (.NET Core 3.0+): true for negative values, -0.0 and negative NaNs.</summary>
@@ -94,7 +94,7 @@ namespace Bento4
         }
 
         /// <summary>
-        /// value.ToString("F" + precision, CultureInfo.InvariantCulture) as .NET 8
+        /// value.ToString("F" + precision, CultureInfo.InvariantCulture) as .NET 6
         /// does it: the exact decimal expansion of the value, rounded to
         /// <paramref name="precision"/> decimals (exact halfway cases to even),
         /// with a '-' sign for every negative value including -0.0.
@@ -178,7 +178,7 @@ namespace Bento4
 
         /// <summary>
         /// double.TryParse(text, AllowLeadingSign | AllowDecimalPoint | AllowExponent,
-        /// CultureInfo.InvariantCulture, out value) as .NET 8 does it: the nearest
+        /// CultureInfo.InvariantCulture, out value) as .NET 6 does it: the nearest
         /// double (halfway cases to even), infinity on overflow, a signed zero on
         /// underflow. <paramref name="text"/> must be
         /// [+-] digits [. digits] [(e|E) [+-] digits] with at least one mantissa

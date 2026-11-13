@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>net8.0;net20</TargetFrameworks>
+    <TargetFrameworks>net6.0;net20</TargetFrameworks>
     <AssemblyName>mp4tag</AssemblyName>
     <RootNamespace>Bento4Sharp.Tools.Mp4Tag</RootNamespace>
     <ImplicitUsings>disable</ImplicitUsings>

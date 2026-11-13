@@ -12,7 +12,7 @@
 // own, so on net20 they need no ExtensionAttribute; a second definition next
 // to the one in Bento4Sharp.dll would make the Visual Studio 2010 compiler
 // report CS1685 for every tool.
-// Nothing in this file is compiled for net8.0.
+// Nothing in this file is compiled for net6.0.
 
 #if !NET6_0_OR_GREATER
 

@@ -19,7 +19,7 @@
 #   BENTO4SHARP_ARTIFACTS   where to build (default: a temporary directory, removed on exit)
 #   BENTO4SHARP_WORK_DIR    where to put generated inputs and outputs (default: a temporary directory)
 #   BENTO4SHARP_SKIP_BUILD  set to 1 to reuse the binaries already in $BENTO4SHARP_ARTIFACTS
-#   BENTO4SHARP_FRAMEWORK   target framework of the port to build and run (default: net8.0; net20 runs
+#   BENTO4SHARP_FRAMEWORK   target framework of the port to build and run (default: net6.0; net20 runs
 #                           the .NET Framework 2.0 executables)
 #   BENTO4SHARP_SKIP_EXTRA  set to 1 to only run the stock cases
 #
@@ -46,7 +46,7 @@ mkdir -p "$WORK/out" "$WORK/gen"
 #----------------------------------------------------------------------
 # target framework of the port
 #----------------------------------------------------------------------
-FW="${BENTO4SHARP_FRAMEWORK:-net8.0}"
+FW="${BENTO4SHARP_FRAMEWORK:-net6.0}"
 
 # port <tool>.dll [<argument>...]: runs a tool of the port. The builds for
 # .NET Framework (net20...) are executables (<tool>.exe); the others are
